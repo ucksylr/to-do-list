@@ -1,0 +1,13 @@
+<button class="btn btn-outline-secondary btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="orderlist">
+    <i class="fas fa-sort-amount-up-alt"></i>
+</button>
+
+<div class="dropdown-menu" aria-labelledby="orderlist">
+    <a class="dropdown-item" href="{% url 'index' %}">Clear</a>
+    <a class="dropdown-item" href="{% url 'order' 'ascending' todolist.id %}">Name Ascending</a>
+    <a class="dropdown-item" href="{% url 'order' 'descending' todolist.id %}">Name Descending</a>
+    <a class="dropdown-item" href="{% url 'order' 'created' todolist.id %}">Created time</a>
+    <a class="dropdown-item" href="{% url 'order' 'deadline' todolist.id %}">Deadline </a>
+    <a class="dropdown-item" href="{% url 'order' 'completed' todolist.id %}">Completed </a>
+    <a class="dropdown-item" href="{% url 'order' 'notcompleted' todolist.id %}">Not Completed </a>
+</div>

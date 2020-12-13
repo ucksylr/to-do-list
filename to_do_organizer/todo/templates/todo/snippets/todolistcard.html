@@ -1,0 +1,29 @@
+{% load filter %}
+<div class="col-lg-4 col-md-6 col-sm-12 p-1 mb-2" id="list{{todolist.id}}">
+    <div class="card show">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-4 text-truncate">
+                    {{ todolist.name }}
+                </div>
+                <div class="col-8 text-right">
+                    <div class="btn-group dropleft">{% include 'todo/todos/todolistaddtodo.html'%}</div>
+                    <div class="btn-group dropdown">{% include 'todo/todos/todolistfiltertodo.html'%}</div>
+                    <div class="btn-group dropdown">{% include 'todo/todos/todolistordertodo.html'%}</div>
+                    <button class="btn btn-outline-danger btn-sm " id="deletelist" data-id="{{todolist.id}}" data-name="{{todolist.name}}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <div class="col-12">
+                </div>
+            </div>
+        </div>
+        <ul class="list-group list-group-flush">
+            {% with todolistname=todolist.name %}
+                {% for todo in todos|getdictvalues:todolistname %}
+                    {% include "todo/snippets/todolistitem.html" %}
+                {% endfor %}
+            {% endwith %}
+        </ul>
+    </div>
+</div>

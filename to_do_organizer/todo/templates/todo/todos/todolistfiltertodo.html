@@ -1,0 +1,10 @@
+<button class="btn btn-outline-secondary btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="filterlist">
+    <i class="fas fa-filter"></i>
+</button>
+
+<div class="dropdown-menu" aria-labelledby="filterlist">
+    <a class="dropdown-item" href="{% url 'index' %}">Clear</a>
+    <a class="dropdown-item" href="{% url 'filter' 'completed' todolist.id %}">Completed</a>
+    <a class="dropdown-item" href="{% url 'filter' 'notcompleted' todolist.id %}">Not Completed</a>
+    <a class="dropdown-item" href="{% url 'filter' 'expired' todolist.id %}">Expired</a>
+</div>

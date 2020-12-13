@@ -1,0 +1,28 @@
+{% load filter %}
+<li class="list-group-item" id="todoitem{{todo.id}}"> <!--for color notes add class this string: list-group-item-action list-group-item-{{todo.id|coloredlist}} -->
+    <div class="row">
+        <div class="col-4 pl-4">
+            <input  {% if todo.status %} checked {% endif %} type="checkbox" class="form-check-input" id="input{{todo.id}}" data-id="{{todo.id}}" data-name="{{todo.name}}">
+            <a class="text-dark" style="text-decoration: none;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="d-inline-block text-truncate" style="max-width: 170px;" id="span{{todo.id}}">
+                    {% if todo.status %} <del class="font-italic">{{ todo.name }}</del> {% else %} {{ todo.name }} {% endif %}
+                </span>
+            </a>  
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">
+                    <h5 class="card-title" id="h5{{todo.id}}">
+                        {{ todo.name }}
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Created: {{ todo.created_at|timeformat }}, Due: {{ todo.deadline|timeformat }}</h6>
+                    <p class="card-text">{{ todo.description }}</p>
+                </a>
+            </div>
+        </div>
+        <div class="col-8 text-right">
+            <span class="badge badge-{{ todo.deadline|timeuntil|upto|expiredbadge }}">Due: {{ todo.deadline|timeuntil|upto }}</span>
+            <button class="btn btn-outline-danger btn-sm rounded-circle btn-xsm " id="deletetodo" data-id="{{todo.id}}">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+    </div>
+</li>
