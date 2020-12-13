@@ -1,7 +1,7 @@
 # to-do-list
 To-do List Project
-How to use
 
+INSTALL & RUN
 Clone repository from your local computer
 
 git clone https://github.com/ucksylr/to-do-list.git
